@@ -43,10 +43,14 @@ export function initialize() {
 
     routeNames.forEach(function(routeName) {
 
-      if (condition) {
-        setRouteByCondition(routeName);
-      } else {
-        setRoute(routeName);
+      if (!app.lookup(`route:${routeName}`)) {
+
+        if (condition) {
+          setRouteByCondition(routeName);
+        } else {
+          setRoute(routeName);
+        }
+
       }
 
     });
